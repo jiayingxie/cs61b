@@ -82,6 +82,21 @@ public class IntList {
 
     public static IntList dcatenate(IntList A, IntList B) {
         //TODO:  fill in method
+        if (A != null && B != null) {
+            IntList ptr = A; //the pointer of A IntList
+            while (ptr.rest != null) {
+                ptr = ptr.rest;
+            }
+            ptr.rest = B;
+            return A;
+        } else {
+            if (A != null) {
+                return A;
+            }
+            if (B != null) {
+                return B;
+            }
+        }
         return null;
     }
 
@@ -91,6 +106,45 @@ public class IntList {
      */
     public static IntList catenate(IntList A, IntList B) {
         //TODO:  fill in method
+        if (A != null && B != null) {
+            IntList resultList = new IntList(A.first, null);
+            IntList ptr = resultList;
+            A = A.rest;
+            while (A != null) {
+                ptr.rest = new IntList(A.first, null);
+                A = A.rest;
+                ptr = ptr.rest;
+            }
+            while (B != null) {
+                ptr.rest = new IntList(B.first, null);
+                B = B.rest;
+                ptr = ptr.rest;
+            }
+            return resultList;
+        } else {
+            if (A != null) {
+                IntList resultList = new IntList(A.first, null);
+                IntList ptr = resultList;
+                A = A.rest;
+                while (A != null) {
+                    ptr.rest = new IntList(A.first, null);
+                    A = A.rest;
+                    ptr = ptr.rest;
+                }
+                return resultList;
+            }
+            if (B != null) {
+                IntList resultList = new IntList(B.first, null);
+                IntList ptr = resultList;
+                B = B.rest;
+                while (B != null) {
+                    ptr.rest = new IntList(B.first, null);
+                    B = B.rest;
+                    ptr = ptr.rest;
+                }
+                return resultList;
+            }
+        }
         return null;
     }
 
