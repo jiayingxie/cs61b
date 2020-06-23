@@ -1,5 +1,5 @@
 public class Planet{
-	static final double GRAVITATIONAL_CONSTANT = 6.67e-11;
+	private static final double GRAVITATIONAL_CONSTANT = 6.67e-11;
 	
 	public double xxPos;//Its current x position
 	public double yyPos;// Its current y position
@@ -11,7 +11,7 @@ public class Planet{
 	
 	//constructor
 	public Planet(double xP, double yP, double xV,
-              double yV, double m, String img){
+              double yV, double m, String img) {
 				  xxPos = xP;
 				  yyPos = yP;
 				  xxVel = xV;
@@ -20,7 +20,7 @@ public class Planet{
 				  imgFileName = img;
 			  }
 	//constructor		  
-	public Planet(Planet p){
+	public Planet(Planet p) {
 				  xxPos = p.xxPos;
 				  yyPos = p.yyPos;
 				  xxVel = p.xxVel;
@@ -30,7 +30,7 @@ public class Planet{
 	}		  
 	
 	//calculates the distance between two Planets
-	public double calcDistance(Planet p){
+	public double calcDistance(Planet p) {
 		//xxdis is the difference between thisplanet and the given one on x-axis
 		//rrdis is the difference between thisplanet and the given one
 		double xxdis, yydis, rrdis;
