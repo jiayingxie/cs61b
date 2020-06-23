@@ -111,10 +111,6 @@ public class NBody{//要按这个编译才行，不加encoding出错：javac -en
             StdDraw.pause(10);
 
             timeVariable += dt;
-
-//            /** Call update on each of the planets.*/
-//            for (i = 0; i < planets.length; ++i) {
-//            }
         }
 
         /** Printing the Universe When the simulation is over, i.e. when you’ve reached time T, you should
