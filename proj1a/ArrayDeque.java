@@ -15,7 +15,7 @@ public class ArrayDeque<T> {
     }
 
     /** Resizes the underlying array to the target capacity. */
-    public void resize(int capacity) {
+    private void resize(int capacity) {
         T[] a = (T[]) new Object[capacity];
         // 1：copy the last part
         System.arraycopy(items, 0, a, 0, nextLast);
@@ -139,33 +139,26 @@ public class ArrayDeque<T> {
 
 
 //    public static void main(String[] args) {
-//        ArrayDeque<String> L = new ArrayDeque<>();
-//        L.addLast("a");
-//        L.addLast("b");
-//        L.addFirst("C");
-//        L.addLast("d");
-//        L.addLast("e");
-//        L.addFirst("f");
-//        L.addFirst("g");
-//        L.printDeque();
-//        System.out.println("-------------");
-//        L.addLast("H");
-//        L.addFirst("next");
-//        L.printDeque();
-//        System.out.println("-------------");
-//        System.out.println(L.get(0));
-//        System.out.println(L.get(7));
-//        System.out.println(L.get(100));
-//        System.out.println(L.removeFirst());
-//        System.out.println(L.removeFirst());
-//        System.out.println(L.removeFirst());
-//        System.out.println(L.removeFirst());
-//        System.out.println(L.removeFirst());
-//        L.removeLast();
-////        System.out.println(L.removeLast());
-//        System.out.println("-------------");
-//        L.printDeque();
-//        System.out.println(L.size);
+//        ArrayDeque<Integer> L = new ArrayDeque<>();
 //        System.out.println(L.isEmpty());
+//        L.addFirst(1);
+//        System.out.println(L.removeFirst());
+//        L.addLast(3);
+//        L.addLast(4);
+//        L.addLast(5);
+//        L.addFirst(6);
+//        L.addLast(7);
+//        L.addFirst(8);
+//        L.addFirst(2);
+//        L.addFirst(3);
+//        L.addFirst(4);
+//        L.removeLast();
+//        L.removeLast();
+//        L.removeLast();
+//        L.removeLast();
+//        System.out.println(L.removeLast());
+//        System.out.println(L.removeLast());
+//        System.out.println(L.removeLast());
+//        System.out.println(L.removeLast());
 //    }
 }
