@@ -1,5 +1,3 @@
-import java.util.Objects;
-
 public class ArrayDeque<T> {
     private int myArrayLen; // the length of array
     private int size; // the length of deque
@@ -60,9 +58,8 @@ public class ArrayDeque<T> {
     public boolean isEmpty() {
         if (this.size == 0) {
             return true;
-        } else {
-            return false;
         }
+        return false;
     }
 
     // Returns the number of items in the deque.
@@ -83,7 +80,7 @@ public class ArrayDeque<T> {
                 System.out.print(items[i] + " ");
             }
         } else {
-            for (i = nextFirst + 1; i < nextLast ; i = i + 1) {
+            for (i = nextFirst + 1; i < nextLast; i = i + 1) {
                 System.out.print(items[i] + " ");
             }
         }
