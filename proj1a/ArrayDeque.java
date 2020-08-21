@@ -146,46 +146,44 @@ public class ArrayDeque<T> {
         }
     }
 
-
-
-    public static void main(String[] args) {
-        ArrayDeque<Integer> L = new ArrayDeque<>();
-        System.out.println(L.isEmpty());
-        L.addFirst(1);
-        System.out.println(L.removeFirst());
-        L.addLast(3);
-        L.addLast(4);
-        L.addLast(5);
-        L.addFirst(6);
-        L.addLast(7);
-        L.addFirst(8);
-        L.addFirst(2);
-        L.addFirst(3);
-        L.addFirst(4);
-        L.addFirst(4);
-        L.addFirst(4);
-        L.addFirst(4);
-        L.addFirst(4);
-        L.addFirst(4);
-        L.addFirst(4);
-        L.addFirst(4);
-        L.addFirst(4);
-        L.addFirst(4);
-//        L.removeLast();
-//        L.removeLast();
-//        L.removeLast();
-//        L.removeLast();
-//        L.removeLast();
-//        L.removeLast();
-//        L.removeLast();
-//        L.removeLast();
-        System.out.println(L.removeLast());
-        System.out.println(L.removeLast());
-        System.out.println(L.removeLast());
-        System.out.println(L.removeLast());
-        System.out.println(L.removeLast());
-        System.out.println(L.removeLast());
-        System.out.println(L.removeLast());
-        System.out.println(L.removeLast());
-    }
+//    public static void main(String[] args) {
+//        ArrayDeque<Integer> L = new ArrayDeque<>();
+//        System.out.println(L.isEmpty());
+//        L.addFirst(1);
+//        System.out.println(L.removeFirst());
+//        L.addLast(3);
+//        L.addLast(4);
+//        L.addLast(5);
+//        L.addFirst(6);
+//        L.addLast(7);
+//        L.addFirst(8);
+//        L.addFirst(2);
+//        L.addFirst(3);
+//        L.addFirst(4);
+//        L.addFirst(4);
+//        L.addFirst(4);
+//        L.addFirst(4);
+//        L.addFirst(4);
+//        L.addFirst(4);
+//        L.addFirst(4);
+//        L.addFirst(4);
+//        L.addFirst(4);
+//        L.addFirst(4);
+////        L.removeLast();
+////        L.removeLast();
+////        L.removeLast();
+////        L.removeLast();
+////        L.removeLast();
+////        L.removeLast();
+////        L.removeLast();
+////        L.removeLast();
+//        System.out.println(L.removeLast());
+//        System.out.println(L.removeLast());
+//        System.out.println(L.removeLast());
+//        System.out.println(L.removeLast());
+//        System.out.println(L.removeLast());
+//        System.out.println(L.removeLast());
+//        System.out.println(L.removeLast());
+//        System.out.println(L.removeLast());
+//    }
 }
