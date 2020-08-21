@@ -15,7 +15,7 @@ public class LinkedListDeque<T> {
             if (index == 0) {
                 return item;
             } else {
-                return this.next.getRecursiveNode(index - 1);
+                return next.getRecursiveNode(index - 1);
             }
         }
     }

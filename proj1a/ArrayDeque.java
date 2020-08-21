@@ -18,7 +18,21 @@ public class ArrayDeque<T> {
     private void resize(int capacity) {
         T[] a = (T[]) new Object[capacity];
         // 1：copy the last part
-        System.arraycopy(items, 0, a, 0, nextLast);
+        int startOfCopy = (capacity - 1) % (myArrayLen - 1);
+//        System.arraycopy(items, startOfCopy, a, 0, nextLast);
+//        for (int i = myArrayLen - 1; i >= nextFirst; --i) {
+//            a[i] = items[i];
+//        }
+        if (items[0] != null) {
+            for (int i = 0; i < nextLast; ++i) {
+                a[i] = items[i];
+            }
+        }else {
+            for (int i = startOfCopy; i < nextLast; ++i) {
+                a[i % capacity] = items[i];
+            }
+        }
+
         // 2: copy the first part
         if (nextLast <= nextFirst) {
             int i, j = capacity - 1;
@@ -35,7 +49,7 @@ public class ArrayDeque<T> {
 
     // Adds an item of type T to the front of the deque.
     public void addFirst(T item) {
-        if (nextFirst == nextLast) {
+        if (nextFirst == nextLast && (myArrayLen - size) <= 1) {
             resize(myArrayLen * 2);
         }
         items[nextFirst] = item;
@@ -152,10 +166,18 @@ public class ArrayDeque<T> {
 //        L.addFirst(2);
 //        L.addFirst(3);
 //        L.addFirst(4);
-//        L.removeLast();
-//        L.removeLast();
-//        L.removeLast();
-//        L.removeLast();
+////        L.removeLast();
+////        L.removeLast();
+////        L.removeLast();
+////        L.removeLast();
+////        L.removeLast();
+////        L.removeLast();
+////        L.removeLast();
+////        L.removeLast();
+//        System.out.println(L.removeLast());
+//        System.out.println(L.removeLast());
+//        System.out.println(L.removeLast());
+//        System.out.println(L.removeLast());
 //        System.out.println(L.removeLast());
 //        System.out.println(L.removeLast());
 //        System.out.println(L.removeLast());
