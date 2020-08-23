@@ -5,16 +5,16 @@ public class OffByOne implements CharacterComparator{
      * eg: equalChars(a,b) is true, while equalChars(a,c) is false */
     @Override
     public boolean equalChars(char x, char y) {
-        if ((x - y) == 1 || (x - y) == -1) {
+        int diff = x - y;
+        if (diff == 1 || diff == -1) {
             return true;
         } else {
             return false;
         }
     }
 //    public static void main(String[] args){
-//        System.out.println('&' - '%');
 //        OffByOne obj = new OffByOne();
 //        System.out.println(obj.equalChars('%','&'));
-//        System.out.println(11/2);
+//        System.out.println(obj.equalChars('a','A'));
 //    }
 }
