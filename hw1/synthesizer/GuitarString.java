@@ -38,6 +38,9 @@ public class GuitarString {
             double r = Math.random() - 0.5;
             buffer.enqueue(r);
         }
+//        for (Double s: buffer) {
+//            System.out.println(s);
+//        }
     }
 
     /* Advance the simulation one time step by performing one iteration of
@@ -58,8 +61,6 @@ public class GuitarString {
             if (!buffer.isEmpty()) {
                 end = (front + buffer.peek()) * 0.5 * 0.996;
             }
-//            // ???
-//            System.out.println(end);
             buffer.enqueue(end);
         }
     }
