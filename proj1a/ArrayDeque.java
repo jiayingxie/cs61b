@@ -37,6 +37,10 @@ public class ArrayDeque<T> {
                 j = j - 1;
             }
             nextFirst = j;
+        } else {
+            for (int i = nextFirst; i < nextLast; ++i) {
+                a[i] = items[i];
+            }
         }
 
         myArrayLen = capacity;
@@ -51,7 +55,7 @@ public class ArrayDeque<T> {
         items[nextFirst] = item;
         nextFirst = (nextFirst + myArrayLen - 1) % myArrayLen;
         size = size + 1;
-        
+
     }
 
     // Adds an item of type T to the back of the deque.
@@ -112,6 +116,8 @@ public class ArrayDeque<T> {
             T temp = items[(nextFirst + 1) % myArrayLen];
             items[(nextFirst + 1) % myArrayLen] = null;
             nextFirst = (nextFirst + 1) % myArrayLen;
+            // ???delete
+            System.out.println(temp);
             return temp;
         }
     }
@@ -131,6 +137,8 @@ public class ArrayDeque<T> {
             T temp = items[(myArrayLen + nextLast - 1) % myArrayLen];
             items[(myArrayLen + nextLast - 1) % myArrayLen] = null;
             nextLast = (myArrayLen + nextLast - 1) % myArrayLen;
+            // ???delete
+            System.out.println(temp);
             return temp;
         }
     }
@@ -146,44 +154,24 @@ public class ArrayDeque<T> {
         }
     }
 
-//    public static void main(String[] args) {
-//        ArrayDeque<Integer> L = new ArrayDeque<>();
-//        System.out.println(L.isEmpty());
-//        L.addFirst(1);
-//        System.out.println(L.removeFirst());
-//        L.addLast(3);
-//        L.addLast(4);
-//        L.addLast(5);
-//        L.addFirst(6);
-//        L.addLast(7);
-//        L.addFirst(8);
-//        L.addFirst(2);
-//        L.addFirst(3);
-//        L.addFirst(4);
-//        L.addFirst(4);
-//        L.addFirst(4);
-//        L.addFirst(4);
-//        L.addFirst(4);
-//        L.addFirst(4);
-//        L.addFirst(4);
-//        L.addFirst(4);
-//        L.addFirst(4);
-//        L.addFirst(4);
-////        L.removeLast();
-////        L.removeLast();
-////        L.removeLast();
-////        L.removeLast();
-////        L.removeLast();
-////        L.removeLast();
-////        L.removeLast();
-////        L.removeLast();
-//        System.out.println(L.removeLast());
-//        System.out.println(L.removeLast());
-//        System.out.println(L.removeLast());
-//        System.out.println(L.removeLast());
-//        System.out.println(L.removeLast());
-//        System.out.println(L.removeLast());
-//        System.out.println(L.removeLast());
-//        System.out.println(L.removeLast());
-//    }
+    public static void main(String[] args) {
+        ArrayDeque<Integer> L = new ArrayDeque<>();
+        System.out.println(L.isEmpty());
+        L.addLast(0);
+        L.addLast(1);
+        L.addLast(2);
+        L.addLast(3);
+        L.addFirst(4);
+        L.addLast(5);
+        L.addLast(8);
+        L.removeLast();
+        L.addLast(11);
+        L.addLast(12);
+        L.removeLast();
+        L.removeFirst();
+        L.removeLast();
+        L.removeFirst();
+        L.removeLast();
+
+    }
 }
