@@ -154,24 +154,24 @@ public class ArrayDeque<T> {
         }
     }
 
-    public static void main(String[] args) {
-        ArrayDeque<Integer> L = new ArrayDeque<>();
-        System.out.println(L.isEmpty());
-        L.addLast(0);
-        L.addLast(1);
-        L.addLast(2);
-        L.addLast(3);
-        L.addFirst(4);
-        L.addLast(5);
-        L.addLast(8);
-        L.removeLast();
-        L.addLast(11);
-        L.addLast(12);
-        L.removeLast();
-        L.removeFirst();
-        L.removeLast();
-        L.removeFirst();
-        L.removeLast();
-
-    }
+//    public static void main(String[] args) {
+//        ArrayDeque<Integer> L = new ArrayDeque<>();
+//        System.out.println(L.isEmpty());
+//        L.addLast(0);
+//        L.addLast(1);
+//        L.addLast(2);
+//        L.addLast(3);
+//        L.addFirst(4);
+//        L.addLast(5);
+//        L.addLast(8);
+//        L.removeLast();
+//        L.addLast(11);
+//        L.addLast(12);
+//        L.removeLast();
+//        L.removeFirst();
+//        L.removeLast();
+//        L.removeFirst();
+//        L.removeLast();
+//
+//    }
 }
