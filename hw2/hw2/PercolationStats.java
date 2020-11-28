@@ -32,15 +32,17 @@ public class PercolationStats {
 
     private double mySimulation() {
         Percolation grid = obj.make(N);
+        int numberOfOpenSites = 0;
         while (!grid.percolates()) {
             // uniform(int n), Returns a random real number uniformly in [0, n).
             int row = StdRandom.uniform(N);
             int col = StdRandom.uniform(N);
             if (!grid.isOpen(row, col)) {
                 grid.open(row, col);
+                numberOfOpenSites += 1;
             }
         }
-        return grid.numberOfOpenSites() * 1.0 / N / N;
+        return numberOfOpenSites * 1.0 / N / N;
     }
 
     // sample mean of percolation threshold
