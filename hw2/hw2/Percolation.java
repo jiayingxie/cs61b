@@ -7,10 +7,8 @@ public class Percolation {
     private int[] grid = null;
     // obj is associated with grid.
     private WeightedQuickUnionUF obj = null;
-    // used to determine whether is full, the reason I use a second grid
-    // is to avoid backwash.
-//    private int[] grid2 = null;
-    // obj2 is associated with grid2.
+    // use obj2 to determine whether is full, the reason I use a
+    // second WQUUF is to avoid backwash.
     private WeightedQuickUnionUF obj2 = null;
     // N rows and N cols.
     private int N;
@@ -30,9 +28,7 @@ public class Percolation {
         numberOfOpenSites = 0;
         grid = new int[bottomIndex + 1];
         obj = new WeightedQuickUnionUF(bottomIndex + 1);
-//        grid2 = new int[bottomIndex];
         obj2 = new WeightedQuickUnionUF(bottomIndex);
-
     }
 
     private boolean validRowAndCol(int row, int col) {
@@ -49,27 +45,32 @@ public class Percolation {
         if (!validRowAndCol(row, col)) {
             throw new IndexOutOfBoundsException();
         }
+
         int currentIndex = getIndex(row, col);
-        grid[currentIndex] = 1;
-        for (int[] sur: neighbour) {
-            int surRow = row + sur[0];
-            int surCol = col + sur[1];
-            if (validRowAndCol(surRow, surCol) && isOpen(surRow, surCol)) {
-                obj.union(currentIndex, getIndex(surRow, surCol));
-                obj2.union(currentIndex, getIndex(surRow, surCol));
+        if (!isOpen(currentIndex)) {
+            grid[currentIndex] = 1;
+            numberOfOpenSites += 1;
+            // especially, if the site is on the 0 row.
+            if (row == 0) {
+                obj.union(topIndex, currentIndex);
+                obj2.union(topIndex, currentIndex);
+            }
+            // especially, if the site is on the N-1 row.
+            if (row == N - 1) {
+                obj.union(currentIndex, bottomIndex);
+                // since I don't want backwash, I do not union
+                // bottomIndex in obj2.
+            }
+            for (int[] sur: neighbour) {
+                int neighbourRow = row + sur[0];
+                int neighbourCol = col + sur[1];
+                int neighbourIndex = getIndex(neighbourRow, neighbourCol);
+                if (validRowAndCol(neighbourRow, neighbourCol) && isOpen(neighbourIndex)) {
+                    obj.union(currentIndex, neighbourIndex);
+                    obj2.union(currentIndex, neighbourIndex);
+                }
             }
         }
-        // especially, if the site is on the 0 row.
-        if (row == 0) {
-            obj.union(topIndex, currentIndex);
-            obj2.union(topIndex, currentIndex);
-        }
-        // especially, if the site is on the N-1 row.
-        if (row == N - 1) {
-            obj.union(currentIndex, bottomIndex);
-            // since I don't want backwash, I do not union bottomIndex in obj2.
-        }
-        numberOfOpenSites += 1;
     }
 
     // is the site (row, col) open?
@@ -78,6 +79,10 @@ public class Percolation {
             throw new IndexOutOfBoundsException();
         }
         return grid[getIndex(row, col)] == 1;
+    }
+
+    private boolean isOpen(int index) {
+        return grid[index] == 1;
     }
 
     // is the site (row, col) full?
