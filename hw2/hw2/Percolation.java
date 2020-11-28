@@ -3,7 +3,7 @@ package hw2;
 import edu.princeton.cs.algs4.WeightedQuickUnionUF;
 
 public class Percolation {
-    WeightedQuickUnionUF obj = null;
+    private WeightedQuickUnionUF obj = null;
     private int[] grid = null;
     private int N;
     private int numberOfOpenSites;
@@ -50,6 +50,10 @@ public class Percolation {
         // especially, if the site is on the 0 row.
         if (row == 0) {
             obj.union(topIndex, currentIndex);
+        }
+        // especially, if the site is on the N-1 row.
+        if (row == N - 1) {
+            obj.union(currentIndex, bottomIndex);
         }
         numberOfOpenSites += 1;
     }
