@@ -3,13 +3,21 @@ package hw2;
 import edu.princeton.cs.algs4.WeightedQuickUnionUF;
 
 public class Percolation {
-    private WeightedQuickUnionUF obj = null;
+    // used to determine whether percolates.
     private int[] grid = null;
+    // obj is associated with grid.
+    private WeightedQuickUnionUF obj = null;
+    // used to determine whether is full, the reason I use a second grid
+    // is to avoid backwash.
+//    private int[] grid2 = null;
+    // obj2 is associated with grid2.
+    private WeightedQuickUnionUF obj2 = null;
+    // N rows and N cols.
     private int N;
     private int numberOfOpenSites;
     private int topIndex;
     private int bottomIndex;
-    private final int[][] surroundings = {{0, -1}, {-1, 0}, {1, 0},{0, 1},};
+    private final int[][] neighbour = {{0, -1}, {-1, 0}, {1, 0},{0, 1},};
 
     // create N-by-N grid, with all sites initially blocked
     public Percolation(int N) {
@@ -17,11 +25,14 @@ public class Percolation {
             throw new IllegalArgumentException();
         }
         this.N = N;
-        numberOfOpenSites = 0;
-        grid = new int[N * N + 2];
-        obj = new WeightedQuickUnionUF(N * N + 2);
         topIndex = 0;
         bottomIndex = N * N + 1;
+        numberOfOpenSites = 0;
+        grid = new int[bottomIndex + 1];
+        obj = new WeightedQuickUnionUF(bottomIndex + 1);
+//        grid2 = new int[bottomIndex];
+        obj2 = new WeightedQuickUnionUF(bottomIndex);
+
     }
 
     private boolean validRowAndCol(int row, int col) {
@@ -40,20 +51,23 @@ public class Percolation {
         }
         int currentIndex = getIndex(row, col);
         grid[currentIndex] = 1;
-        for (int[] sur:surroundings) {
+        for (int[] sur: neighbour) {
             int surRow = row + sur[0];
             int surCol = col + sur[1];
             if (validRowAndCol(surRow, surCol) && isOpen(surRow, surCol)) {
                 obj.union(currentIndex, getIndex(surRow, surCol));
+                obj2.union(currentIndex, getIndex(surRow, surCol));
             }
         }
         // especially, if the site is on the 0 row.
         if (row == 0) {
             obj.union(topIndex, currentIndex);
+            obj2.union(topIndex, currentIndex);
         }
         // especially, if the site is on the N-1 row.
         if (row == N - 1) {
             obj.union(currentIndex, bottomIndex);
+            // since I don't want backwash, I do not union bottomIndex in obj2.
         }
         numberOfOpenSites += 1;
     }
@@ -71,7 +85,7 @@ public class Percolation {
         if (!validRowAndCol(row, col)) {
             throw new IndexOutOfBoundsException();
         }
-        return obj.connected(getIndex(row, col), topIndex);
+        return obj2.connected(getIndex(row, col), topIndex);
     }
 
     // number of open sites
